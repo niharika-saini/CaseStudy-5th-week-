@@ -285,16 +285,37 @@ public class Test {
       public static void main(String[] args) {
 		PizzaServiceImpl ps=new PizzaServiceImpl();
 		
-		// Add Pizza 
-		Pizza pizza =new Pizza(123,"Medium",250,"Jaipur");
-		ps.addPizza(pizza);
-		Pizza pizza1 =new Pizza(156,"Regular",150,"Goa");
-		ps.addPizza(pizza1);
-		Pizza pizza2 =new Pizza(159,"Large",600,"Mumbai");
-		ps.addPizza(pizza2);
+		 //Adding  Pizza 
+		   Pizza pizza =new Pizza(123,"Medium",250,"Jaipur");
+		   ps.addPizza(pizza);
+		
+		   pizza=ps.findPizzaByNo(123);
+		   System.out.println("Number of Pizza:"+pizza.getPizzaNo());
+		   System.out.println("Type of PIzza:"+pizza.getPizzaType());
+		   System.out.println("Price of Pizza:"+pizza.getPizzaPrice());
+		   System.out.println("Delivery Address of Pizza:"+pizza.getDeliveryAdd());
+		
+		//Updating the Pizza Data
+		
+		   ps.updatePizza(pizza);
+		   pizza.setPizzaType("Regular");
+		   pizza.setPizzaPrice(200);
+		   pizza.setDeliveryAdd("Gujarat");
+		
+		   System.out.println("Number of Pizza:"+pizza.getPizzaNo());
+		   System.out.println("Type of PIzza:"+pizza.getPizzaType());
+		   System.out.println("Price of Pizza:"+pizza.getPizzaPrice());
+		   System.out.println("Delivery Address of Pizza:"+pizza.getDeliveryAdd());
+		
+		// Deleting the Pizza Data
+		
+		   ps.deletePizza(pizza);
+		   System.out.println("There is No Pizza order......");
+		
 		
 	}
 }
+
 
 
 ================================================================================================================================================
@@ -341,8 +362,26 @@ persistence.xml
    
 OUTPUT:
 
+// Adding Data 
 Hibernate: insert into Pizza (DeliveryAdd, pizzaPrice, pizzaType, pizzaNo) values (?, ?, ?, ?)
-Hibernate: insert into Pizza (DeliveryAdd, pizzaPrice, pizzaType, pizzaNo) values (?, ?, ?, ?)
-Hibernate: insert into Pizza (DeliveryAdd, pizzaPrice, pizzaType, pizzaNo) values (?, ?, ?, ?)
+Number of Pizza:123
+Type of PIzza:Medium
+Price of Pizza:250
+Delivery Address of Pizza:Jaipur
+
+// Updating Data
+Hibernate: select pizza0_.pizzaNo as pizzaNo0_0_, pizza0_.DeliveryAdd as Delivery2_0_0_, pizza0_.pizzaPrice as pizzaPrice0_0_, pizza0_.pizzaType as pizzaType0_0_ from Pizza pizza0_ where pizza0_.pizzaNo=?
+Number of Pizza:123
+Type of PIzza:Regular
+Price of Pizza:200
+Delivery Address of Pizza:Gujarat
+
+// Deleting the Data
+Hibernate: select pizza0_.pizzaNo as pizzaNo0_0_, pizza0_.DeliveryAdd as Delivery2_0_0_, pizza0_.pizzaPrice as pizzaPrice0_0_, pizza0_.pizzaType as pizzaType0_0_ from Pizza pizza0_ where pizza0_.pizzaNo=?
+Hibernate: delete from Pizza where pizzaNo=?
+There is No Pizza order......
+
+
+
 
 
