@@ -286,7 +286,7 @@ public class Test {
 		PizzaServiceImpl ps=new PizzaServiceImpl();
 		
 		 //Adding  Pizza 
-		   Pizza pizza =new Pizza(123,"Medium",250,"Jaipur");
+		   Pizza pizza =new Pizza(123,"cheese Pizza",250,"Jaipur");
 		   ps.addPizza(pizza);
 		
 		   pizza=ps.findPizzaByNo(123);
@@ -298,7 +298,7 @@ public class Test {
 		//Updating the Pizza Data
 		
 		   ps.updatePizza(pizza);
-		   pizza.setPizzaType("Regular");
+		   pizza.setPizzaType("Veg Pizza");
 		   pizza.setPizzaPrice(200);
 		   pizza.setDeliveryAdd("Gujarat");
 		
@@ -365,14 +365,14 @@ OUTPUT:
 // Adding Data 
 Hibernate: insert into Pizza (DeliveryAdd, pizzaPrice, pizzaType, pizzaNo) values (?, ?, ?, ?)
 Number of Pizza:123
-Type of PIzza:Medium
+Type of PIzza:cheese Pizza
 Price of Pizza:250
 Delivery Address of Pizza:Jaipur
 
 // Updating Data
 Hibernate: select pizza0_.pizzaNo as pizzaNo0_0_, pizza0_.DeliveryAdd as Delivery2_0_0_, pizza0_.pizzaPrice as pizzaPrice0_0_, pizza0_.pizzaType as pizzaType0_0_ from Pizza pizza0_ where pizza0_.pizzaNo=?
 Number of Pizza:123
-Type of PIzza:Regular
+Type of PIzza:Veg Pizza
 Price of Pizza:200
 Delivery Address of Pizza:Gujarat
 
